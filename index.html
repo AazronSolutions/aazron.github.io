@@ -1,87 +1,318 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aazron — Built on Trust</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:Inter, Arial, sans-serif;margin:0;background:#F8FAFC;color:#1F2937}
-    .wrap{max-width:1000px;margin:40px auto;padding:24px}
-    header{display:flex;justify-content:space-between;align-items:center}
-    .logo{font-weight:700;color:#0B5FFF}
-    nav a{margin-left:18px;text-decoration:none;color:#1F2937}
-    .hero{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:36px}
-    .hero .left{flex:1;min-width:280px}
-    .title{font-size:28px;font-weight:700;margin:0 0 10px}
-    .sub{margin:0 0 18px;color:#4B5563}
-    .btn{display:inline-block;padding:12px 18px;background:#0B5FFF;color:#fff;border-radius:8px;text-decoration:none}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:30px}
-    .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 12px rgba(15,23,42,0.06)}
-    footer{margin-top:42px;padding-top:24px;border-top:1px solid #E6EEF8;color:#6B7280}
-    @media(max-width:600px){.title{font-size:22px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aazron Solutions - Rise. Evolve. Succeed.</title>
+    <meta name="description" content="Future-Ready Job Placement & HR Solutions – Connecting Talent and Businesses with AI-Powered Matching, Career Coaching, and Compliance Services.">
+    <meta name="keywords" content="job placement, HR solutions, AI-powered matching, career services, staffing outsourcing">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://via.placeholder.com/1920x600?text=Hero+Background') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #00A86B;
+            border-color: #00A86B;
+        }
+        .btn-primary:hover {
+            background-color: #007A4D;
+            border-color: #007A4D;
+        }
+        .btn-secondary {
+            background-color: #003366;
+            border-color: #003366;
+        }
+        .btn-secondary:hover {
+            background-color: #002244;
+            border-color: #002244;
+        }
+        .section-bg {
+            background-color: #f8f9fa;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #003366;
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: #00A86B;
+            border-radius: 50%;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 40px 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">Aazron</div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#way">The Aazron Way</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <div class="left">
-        <h1 class="title">Built on trust. Driven by delivery.</h1>
-        <p class="sub">We solve hiring, payroll and end-to-end recruitment for businesses that value reliability. Fast, clear and human.</p>
-        <a class="btn" href="#contact">Talk to us</a>
-      </div>
-      <div class="right" style="min-width:220px">
-        <div style="background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(11,95,255,0.06)">
-          <strong>Services</strong>
-          <ul style="padding-left:18px;margin:10px 0 0 0;color:#475569">
-            <li>Job Consultancy</li>
-            <li>Staffing & RPO</li>
-            <li>End-to-End Recruitment</li>
-            <li>Payroll & PF</li>
-          </ul>
+    <!-- Header/Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aazron Solutions</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why-choose">Why Choose</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workflow">Workflow</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary ms-3">Login/Sign Up</a>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="fade-in">Rise. Evolve. Succeed. Your Journey Begins with Aazron Solutions</h1>
+            <p class="lead">Future-Ready Job Placement & HR Solutions – Connecting Talent and Businesses with AI-Powered Matching, Career Coaching, and Compliance Services.</p>
+            <a href="#services" class="btn btn-primary btn-lg me-3">Get Placed Faster</a>
+            <a href="#services" class="btn btn-secondary btn-lg">Hire Smarter</a>
+        </div>
     </section>
 
-    <section id="services" class="cards">
-      <div class="card"><strong>Job Consultancy</strong><p style="margin:8px 0 0;color:#6B7280">Strategic advice to hire the right people fast.</p></div>
-      <div class="card"><strong>Staffing</strong><p style="margin:8px 0 0;color:#6B7280">Contract and permanent staffing solutions.</p></div>
-      <div class="card"><strong>RPO</strong><p style="margin:8px 0 0;color:#6B7280">Recruitment process outsourcing for steady growth.</p></div>
-      <div class="card"><strong>End-to-End Recruitment</strong><p style="margin:8px 0 0;color:#6B7280">From shortlist to offer, we handle it all.</p></div>
-      <div class="card"><strong>Payroll</strong><p style="margin:8px 0 0;color:#6B7280">Accurate payroll, on time, every time.</p></div>
-      <div class="card"><strong>PF</strong><p style="margin:8px 0 0;color:#6B7280">Employee provident fund compliance handled.</p></div>
+    <!-- Services Overview Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Services – Made for People, Powered by Technology</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Job Placement</h5>
+                            <p class="card-text">Find work that fits your life. We connect you to the right opportunities using AI-powered matching, verified hiring, and hands-on onboarding support.</p>
+                            <a href="#" class="btn btn-primary">Explore Jobs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Career Services</h5>
+                            <p class="card-text">Show the world what you can do. From resumes that pass applicant tracking systems to LinkedIn profiles that tell your story, we help you stand out.</p>
+                            <a href="#" class="btn btn-primary">Build Your Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-clipboard-check fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Compliance & HR Essentials</h5>
+                            <p class="card-text">Less paperwork, more progress. Registrations like PAN, PF, and MSME don’t have to slow you down. We handle the details with simple, digital-first processes.</p>
+                            <a href="#" class="btn btn-primary">Get Compliant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Staffing & Outsourcing</h5>
+                            <p class="card-text">Whether you’re scaling up for a project or building a long-term team, we make sure you have reliable talent at your side.</p>
+                            <a href="#" class="btn btn-primary">Hire Talent</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="way" style="margin-top:28px">
-      <h3 style="margin:0 0 8px">The Aazron Way</h3>
-      <p style="margin:0 0 12px;color:#475569">Trust, delivery, and respect guide every choice.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px">
-        <div style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 12px rgba(15,23,42,0.04)">Deliver What We Promise</div>
-        <div style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 12px rgba(15,23,42,0.04)">Build Bonds, Not Deals</div>
-        <div style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 12px rgba(15,23,42,0.04)">Lead with Integrity</div>
-      </div>
+    <!-- Why Choose Section -->
+    <section id="why-choose" class="py-5 section-bg">
+        <div class="container">
+            <h2 class="text-center mb-4">Why Choose Aazron Solutions</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                    <h5>AI-Driven Placement Precision</h5>
+                    <p>Tailored matches for lasting success.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h5>Verified Candidate Pool & Background Checks</h5>
+                    <p>Trustworthy hires with comprehensive verification.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-sync fa-3x text-primary mb-3"></i>
+                    <h5>End-to-End HR Ecosystem</h5>
+                    <p>From onboarding to compliance, we handle it all.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-handshake fa-3x text-primary mb-3"></i>
+                    <h5>Personalized Support</h5>
+                    <p>Dedicated coaching and guidance for employers & professionals.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" style="margin-top:30px">
-      <h3 style="margin:0 0 8px">Contact</h3>
-      <p style="margin:0 0 8px;color:#475569">Email: hello@aazron.in</p>
-      <p style="margin:0 0 8px;color:#475569">Phone: +91 90000 00000</p>
+    <!-- Workflow Section -->
+    <section id="workflow" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Job Placement Workflow</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h5>Sourcing & Screening</h5>
+                    <p>We find talent through trusted networks and carefully screen profiles for skills and potential.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>Smart Matching</h5>
+                    <p>AI-driven tools connect candidates with the right roles, ensuring long-term success.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>Background Verification</h5>
+                    <p>Comprehensive checks build trust and guarantee compliance for employers and candidates.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>Employer Connect</h5>
+                    <p>Direct introductions to leading companies with smooth coordination of interviews and offers.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>Onboarding Support</h5>
+                    <p>Guidance through paperwork and joining formalities to ensure quick, lasting success.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Aazron. All rights reserved.
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 section-bg">
+        <div class="container">
+            <h2 class="text-center mb-4">Real Testimonials & Success Stories</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <p>“Aazron helped me land my dream role in just 3 weeks. Their resume makeover and interview coaching gave me the confidence I needed.”</p>
+                        <p><strong>Priya S., Software Engineer</strong></p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <p>“90% of our candidates found relevant opportunities within 30 days thanks to Aazron’s AI-powered job placement.”</p>
+                        <p><strong>Internal Placement Report 2025</strong></p>
+                        <i class="fas fa-chart-line fa-3x text-primary"></i>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card text-center">
+                        <p>“As an employer, I trust Aazron for verified profiles and smooth onboarding. Their team saves us weeks of hiring time.”</p>
+                        <p><strong>HR Head, Leading IT Firm</strong></p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Aazron Solutions</h5>
+                    <p>Rise. Evolve. Succeed.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#services" class="text-white">Services</a></li>
+                        <li><a href="#why-choose" class="text-white">Why Choose</a></li>
+                        <li><a href="#workflow" class="text-white">Workflow</a></li>
+                        <li><a href="#testimonials" class="text-white">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Stay Updated</h5>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2023 Aazron Solutions. All rights reserved.</p>
+        </div>
     </footer>
-  </div>
 
-  <script>document.getElementById('year').innerText = new Date().getFullYear();</script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
