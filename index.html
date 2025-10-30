@@ -12,11 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- AOS for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Particles.js for Cinematic Particle Effects -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Three.js for 3D Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
@@ -28,29 +35,54 @@
             color: white;
             padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         .btn-primary {
             background-color: #00A86B;
             border-color: #00A86B;
+            transition: all 0.3s ease;
         }
         .btn-primary:hover {
             background-color: #007A4D;
             border-color: #007A4D;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 168, 107, 0.3);
         }
         .btn-secondary {
             background-color: #003366;
             border-color: #003366;
+            transition: all 0.3s ease;
         }
         .btn-secondary:hover {
             background-color: #002244;
             border-color: #002244;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.3);
         }
         .section-bg {
             background-color: #f8f9fa;
         }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
         .card:hover {
-            transform: translateY(-5px);
-            transition: 0.3s;
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         .timeline {
             position: relative;
@@ -63,11 +95,22 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: #003366;
+            background: linear-gradient(to bottom, #003366, #00A86B);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         .timeline-item {
             margin-bottom: 20px;
             position: relative;
+            animation: slideInLeft 1s ease-out;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         .timeline-item::before {
             content: '';
@@ -78,12 +121,22 @@
             height: 10px;
             background: #00A86B;
             border-radius: 50%;
+            animation: glow 2s infinite;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #00A86B; }
+            50% { box-shadow: 0 0 20px #00A86B; }
+            100% { box-shadow: 0 0 5px #00A86B; }
         }
         .testimonial-card {
             background: white;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.05);
         }
         footer {
             background-color: #003366;
@@ -98,8 +151,32 @@
             animation: fadeIn 1s ease-in;
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 3D Canvas Container */
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        /* Particles Container */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
@@ -125,9 +202,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with 3D and Particles -->
     <section id="home" class="hero">
-        <div class="container">
+        <div id="particles-js"></div>
+        <div id="threejs-container"></div>
+        <div class="container hero-content">
             <h1 class="fade-in">Rise. Evolve. Succeed. Your Journey Begins with Aazron Solutions</h1>
             <p class="lead">Future-Ready Job Placement & HR Solutions – Connecting Talent and Businesses with AI-Powered Matching, Career Coaching, and Compliance Services.</p>
             <a href="#services" class="btn btn-primary btn-lg me-3">Get Placed Faster</a>
@@ -136,11 +215,11 @@
     </section>
 
     <!-- Services Overview Section -->
-    <section id="services" class="py-5">
+    <section id="services" class="py-5" data-aos="fade-up">
         <div class="container">
             <h2 class="text-center mb-4">Our Services – Made for People, Powered by Technology</h2>
             <div class="row">
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-briefcase fa-3x text-primary mb-3"></i>
@@ -150,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="card h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
@@ -160,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="card h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-clipboard-check fa-3x text-primary mb-3"></i>
@@ -170,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="zoom-in" data-aos-delay="400">
                     <div class="card h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-users fa-3x text-primary mb-3"></i>
@@ -185,26 +264,26 @@
     </section>
 
     <!-- Why Choose Section -->
-    <section id="why-choose" class="py-5 section-bg">
+    <section id="why-choose" class="py-5 section-bg parallax" style="background-image: url('https://via.placeholder.com/1920x600?text=Parallax+Background');" data-aos="fade-in">
         <div class="container">
             <h2 class="text-center mb-4">Why Choose Aazron Solutions</h2>
             <div class="row">
-                <div class="col-md-6 col-lg-3 text-center mb-4">
+                <div class="col-md-6 col-lg-3 text-center mb-4" data-aos="flip-left" data-aos-delay="100">
                     <i class="fas fa-brain fa-3x text-primary mb-3"></i>
                     <h5>AI-Driven Placement Precision</h5>
                     <p>Tailored matches for lasting success.</p>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center mb-4">
+                <div class="col-md-6 col-lg-3 text-center mb-4" data-aos="flip-left" data-aos-delay="200">
                     <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
                     <h5>Verified Candidate Pool & Background Checks</h5>
                     <p>Trustworthy hires with comprehensive verification.</p>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center mb-4">
+                <div class="col-md-6 col-lg-3 text-center mb-4" data-aos="flip-left" data-aos-delay="300">
                     <i class="fas fa-sync fa-3x text-primary mb-3"></i>
                     <h5>End-to-End HR Ecosystem</h5>
                     <p>From onboarding to compliance, we handle it all.</p>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center mb-4">
+                <div class="col-md-6 col-lg-3 text-center mb-4" data-aos="flip-left" data-aos-delay="400">
                     <i class="fas fa-handshake fa-3x text-primary mb-3"></i>
                     <h5>Personalized Support</h5>
                     <p>Dedicated coaching and guidance for employers & professionals.</p>
@@ -214,27 +293,27 @@
     </section>
 
     <!-- Workflow Section -->
-    <section id="workflow" class="py-5">
+    <section id="workflow" class="py-5" data-aos="slide-up">
         <div class="container">
             <h2 class="text-center mb-4">Our Job Placement Workflow</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
                     <h5>Sourcing & Screening</h5>
                     <p>We find talent through trusted networks and carefully screen profiles for skills and potential.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
                     <h5>Smart Matching</h5>
                     <p>AI-driven tools connect candidates with the right roles, ensuring long-term success.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
                     <h5>Background Verification</h5>
                     <p>Comprehensive checks build trust and guarantee compliance for employers and candidates.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
                     <h5>Employer Connect</h5>
                     <p>Direct introductions to leading companies with smooth coordination of interviews and offers.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="500">
                     <h5>Onboarding Support</h5>
                     <p>Guidance through paperwork and joining formalities to ensure quick, lasting success.</p>
                 </div>
@@ -243,11 +322,11 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5 section-bg">
+    <section id="testimonials" class="py-5 section-bg" data-aos="zoom-in-up">
         <div class="container">
             <h2 class="text-center mb-4">Real Testimonials & Success Stories</h2>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4" data-aos="flip-up" data-aos-delay="100">
                     <div class="testimonial-card text-center">
                         <p>“Aazron helped me land my dream role in just 3 weeks. Their resume makeover and interview coaching gave me the confidence I needed.”</p>
                         <p><strong>Priya S., Software Engineer</strong></p>
@@ -256,14 +335,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4" data-aos="flip-up" data-aos-delay="200">
                     <div class="testimonial-card text-center">
                         <p>“90% of our candidates found relevant opportunities within 30 days thanks to Aazron’s AI-powered job placement.”</p>
                         <p><strong>Internal Placement Report 2025</strong></p>
                         <i class="fas fa-chart-line fa-3x text-primary"></i>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4" data-aos="flip-up" data-aos-delay="300">
                     <div class="testimonial-card text-center">
                         <p>“As an employer, I trust Aazron for verified profiles and smooth onboarding. Their team saves us weeks of hiring time.”</p>
                         <p><strong>HR Head, Leading IT Firm</strong></p>
@@ -287,32 +366,4 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#services" class="text-white">Services</a></li>
-                        <li><a href="#why-choose" class="text-white">Why Choose</a></li>
-                        <li><a href="#workflow" class="text-white">Workflow</a></li>
-                        <li><a href="#testimonials" class="text-white">Testimonials</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Stay Updated</h5>
-                    <form>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email">
-                            <button class="btn btn-primary" type="submit">Subscribe</button>
-                        </div>
-                    </form>
-                    <div>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <p class="text-center">&copy; 2023 Aazron Solutions. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                        <li><a href="#services" class
