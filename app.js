@@ -1,24 +1,21 @@
-// --- Cinematic Fade-In-On-Scroll ---
+// --- Cinematic Fade-In-On-Scroll Logic ---
 
 document.addEventListener("DOMContentLoaded", () => {
   
-  // This is the "watcher"
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      // When the element is on screen...
+      // If the element enters the viewport, apply the "is-visible" class.
       if (entry.isIntersecting) {
-        // Add the 'is-visible' class to it
         entry.target.classList.add("is-visible");
       }
     });
   }, {
-    threshold: 0.1 // Trigger when 10% of the element is visible
+    threshold: 0.1 // Triggers when 10% of the element is visible
   });
 
-  // Find all the sections we marked with "fade-in-section" in our HTML
+  // Select all sections we want to animate (must have class="fade-in-section")
   const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
   
-  // Tell the "watcher" to watch each one
   sectionsToAnimate.forEach((section) => {
     observer.observe(section);
   });

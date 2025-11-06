@@ -44,7 +44,8 @@
 
         <section class="how-it-works fade-in-section">
             <h3>How It Works</h3>
-            <div class="why-grid"> <div class="why-item">
+            <div class="why-grid"> 
+                <div class="why-item">
                     <h4>Step 1: Understand</h4>
                     <p>We hold a real conversation to learn about your role, your team, and the culture you’re building.</p>
                 </div>
@@ -77,10 +78,10 @@
                 <p>Tell us your hiring need.</p>
                 <form class="contact-form">
                     <label for="company-name">Name</label>
-                    <input type="text" id="company-name" name="name">
+                    <input type="text" id="company-name" name="name" required>
                     
                     <label for="company-email">Work Email</label>
-                    <input type="email" id="company-email" name="email">
+                    <input type="email" id="company-email" name="email" required>
                     
                     <label for="company-message">Message</label>
                     <textarea id="company-message" name="message" rows="4"></textarea>
@@ -94,10 +95,10 @@
                 <p>Share your story.</p>
                 <form class="contact-form">
                     <label for="seeker-name">Name</label>
-                    <input type="text" id="seeker-name" name="name">
+                    <input type="text" id="seeker-name" name="name" required>
                     
                     <label for="seeker-email">Email ID</label>
-                    <input type="email" id="seeker-email" name="email">
+                    <input type="email" id="seeker-email" name="email" required>
                     
                     <label for="seeker-message">Message</label>
                     <textarea id="seeker-message" name="message" rows="4"></textarea>
@@ -106,7 +107,7 @@
                 </form>
             </div>
         </section>
-        <p style="text-align: center; margin-top: -30px;">“We read every message. A real person will reply in 12–24 hours. No bots. Just Aazron.”</p>
+        <p style="text-align: center; max-width: 1000px; margin: -30px auto 60px auto;">“We read every message. A real person will reply in 12–24 hours. No bots. Just Aazron.”</p>
 
     </main>
 
@@ -126,6 +127,5 @@
     </footer>
 
     <script src="app.js"></script>
-
 </body>
 </html>

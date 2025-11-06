@@ -1,64 +1,78 @@
 /* ================================== */
-/* --- Global Styles & Fonts --- */
+/* --- Global Styles & Dark Mode --- */
 /* ================================== */
 
-/* A modern, clean font stack */
+:root {
+    /* Define Color Palette */
+    --color-dark-bg: #121212; /* Deep Black/Grey Background */
+    --color-mid-bg: #1e1e1e;  /* Section background */
+    --color-text-light: #f5f5f5; /* Light Text */
+    --color-text-mid: #b0b0b0;  /* Secondary Text */
+    --color-primary: #007aff;  /* Bright Blue (From Logo) */
+    --color-primary-hover: #1a8bff;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* Clean white background */
-    color: #333; /* Dark grey text for readability */
+    background-color: var(--color-dark-bg); /* Dark Mode Background */
+    color: var(--color-text-light); /* Light Text */
     line-height: 1.6;
 }
 
 h1, h2, h3, h4 {
     font-weight: 700;
     line-height: 1.2;
+    color: var(--color-text-light);
 }
 
 p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    color: var(--color-text-mid);
 }
 
 a {
-    color: #007aff; /* A professional blue link color */
+    color: var(--color-primary);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: var(--color-primary-hover);
     text-decoration: underline;
 }
 
-/* This is a helper to wrap content in a max-width */
 main {
     width: 100%;
-    overflow-x: hidden; /* Prevents horizontal scroll */
+    overflow-x: hidden;
 }
 
 section {
-    padding: 60px 20px; /* 60px padding top/bottom, 20px on sides */
-    max-width: 1000px; /* Constrains content width */
-    margin: 0 auto; /* Centers the content */
+    padding: 80px 20px; /* Increased padding for cinematic feel */
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* ================================== */
-/* --- Header, Logo & Nav Bar --- */
+/* --- Header & Nav Bar --- */
 /* ================================== */
 .main-header {
     display: flex;
-    justify-content: space-between; /* Pushes logo left, nav right */
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    border-bottom: 1px solid #eee; /* Subtle separator line */
+    background-color: var(--color-dark-bg);
+    border-bottom: 1px solid #333; /* Darker border */
 }
 
 .logo img {
-    height: 50px; /* Set your logo height. Adjust as needed. */
+    height: 50px;
     width: auto;
+    transition: transform 0.3s ease;
 }
 
 .main-nav ul {
@@ -75,225 +89,129 @@ section {
 .main-nav a {
     font-size: 1rem;
     font-weight: 600;
-    color: #444;
-    text-decoration: none;
+    color: var(--color-text-light);
     transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
-    color: #007aff;
+    color: var(--color-primary);
 }
 
 /* ================================== */
-/* --- Hero Section (Homepage) --- */
+/* --- Page Layouts & Elements --- */
 /* ================================== */
-.hero-section {
+
+.hero-section, .page-hero {
     text-align: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 120px; /* Extra padding for dramatic effect */
+    padding-bottom: 120px;
 }
 
-.hero-section h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+.hero-section h1, .page-hero h1 {
+    font-size: 3.8rem; /* Larger, bolder text */
 }
 
-.hero-section h2 {
-    font-size: 1.5rem;
+.hero-section h2, .page-hero h2 {
+    font-size: 1.8rem;
     font-weight: 400;
-    color: #555;
-    margin-bottom: 2rem;
+    color: var(--color-text-mid);
 }
 
-/* ================================== */
-/* --- Buttons --- */
-/* ================================== */
-.button {
-    background-color: #007aff;
-    color: #ffffff;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.button:hover {
-    background-color: #0056b3;
-    color: #ffffff;
-    text-decoration: none;
-    transform: translateY(-2px); /* Subtle "lift" on hover */
-}
-
-
-/* ================================== */
-/* --- Layout (Columns, Grids) --- */
-/* ================================== */
+/* Two-Column Layouts (Key to mobile stacking) */
 .two-column-cta {
     display: flex;
-    gap: 30px; /* Space between the two boxes */
-}
-
-.cta-box {
-    flex: 1; /* Makes both boxes equal width */
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
     gap: 30px;
 }
 
-.why-item h4 {
-    font-size: 1.2rem;
+.cta-box {
+    flex: 1;
+    background-color: var(--color-mid-bg); /* Section background */
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333; /* Subtle frame */
+}
+.cta-box h3 {
+    color: var(--color-primary); /* Highlight headers */
 }
 
-
-/* ================================== */
-/* --- Footer --- */
-/* ================================== */
-footer {
-    background-color: #222;
-    color: #fff;
-    padding: 60px 20px;
-    text-align: center;
+.why-grid, .blog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-top: 20px;
 }
 
-.footer-contact h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.button {
+    background-color: var(--color-primary);
+    color: var(--color-dark-bg); /* Dark text on bright button */
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
-.quick-contact-form {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.button:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
 }
 
-.quick-contact-form input {
-    font-size: 1rem;
-    padding: 12px;
-    border-radius: 8px 0 0 8px; /* Rounded on the left */
-    border: none;
-    width: 250px;
-}
-
-.quick-contact-form button {
-    font-size: 1.2rem;
-    padding: 11px 20px;
-    border-radius: 0 8px 8px 0; /* Rounded on the right */
-    border: none;
-    background-color: #007aff;
-    color: white;
-    cursor: pointer;
-    margin-left: -5px; /* Joins the button to the input */
-}
-
-
-/* ================================== */
-/* --- CINEMATIC FADE-IN ANIMATION --- */
-/* ================================== */
-
-/* 1. This is the default state: hidden and slightly down */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px); /* Moves it 20px down */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* 2. This is the animated state: visible and in its original position */
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0); /* Moves it back to 0 */
-}
-/* ================================== */
-/* --- Contact Form Styles --- */
-/* ================================== */
-
+/* Forms */
 .contact-form {
     display: flex;
     flex-direction: column;
 }
 
-.contact-form label {
-    font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
 .contact-form input,
 .contact-form textarea {
-    font-size: 1rem;
-    padding: 12px;
-    border: 1px solid #ddd;
+    background-color: #2b2b2b; /* Dark input background */
+    color: var(--color-text-light);
+    border: 1px solid #444;
     border-radius: 8px;
-    font-family: inherit; /* Use the same font as the body */
+    padding: 12px;
 }
 
-.contact-form button {
-    margin-top: 20px;
-    align-self: flex-start; /* Don't stretch the button */
+
+/* Footer Styles */
+footer {
+    background-color: #000; /* Pure black footer */
+    color: var(--color-text-mid);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #333;
 }
+
+.quick-contact-form input {
+    background-color: #2b2b2b;
+    color: var(--color-text-light);
+    border: 1px solid #444;
+}
+
+.quick-contact-form button {
+    background-color: var(--color-primary);
+}
+
+
 /* ================================== */
-/* --- Blog Card Styles --- */
+/* --- CINEMATIC FADE-IN ANIMATION (No Lag) --- */
 /* ================================== */
-
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 30px;
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  /* Uses hardware acceleration for lag-free animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 }
 
-.blog-card {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column; /* Stacks content vertically */
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.blog-card h3 {
-    font-size: 1.4rem;
-    margin-top: 0;
-}
-
-.blog-meta {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #555;
-    margin-top: -10px;
-    margin-bottom: 15px;
-}
-
-.blog-card p {
-    flex-grow: 1; /* Pushes the "Read More" link to the bottom */
-}
-
-.read-more {
-    font-weight: 700;
-    color: #007aff;
-    text-decoration: none;
-}
-
-.read-more:hover {
-    text-decoration: underline;
-}
 /* ================================== */
-/* --- MOBILE RESPONSIVENESS (Media Queries) --- */
+/* --- MOBILE RESPONSIVENESS (Lag-Free) --- */
 /* ================================== */
-
-/* Target screens smaller than 768px (standard tablet/phone breakpoint) */
 @media (max-width: 768px) {
     
-    /* 1. Adjust global padding and font size for smaller screens */
-    body {
-        font-size: 16px;
-    }
-    
-    /* 2. Make the header stack vertically */
     .main-header {
         flex-direction: column;
         text-align: center;
@@ -304,31 +222,27 @@ footer {
         flex-direction: column;
         padding-top: 15px;
     }
-
-    .main-nav li {
-        margin: 5px 0;
-    }
     
-    /* 3. Force two-column layouts to stack on phones */
+    /* Crucial stacking for mobile viewing */
     .two-column-cta,
     .why-grid,
     .blog-grid {
-        grid-template-columns: 1fr; /* Change to a single column */
-        gap: 20px;
+        flex-direction: column; 
+        grid-template-columns: 1fr; 
+        gap: 30px;
     }
 
-    /* 4. Reduce font size for large titles on small screens */
-    .hero-section h1 {
+    /* Scaling down text for mobile readability */
+    .hero-section h1, .page-hero h1 {
         font-size: 2.5rem;
     }
     
-    .hero-section h2 {
-        font-size: 1.2rem;
+    .hero-section h2, .page-hero h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
     }
     
-    /* 5. Make the quick-contact form full width */
-    .quick-contact-form input {
-        width: 70%;
+    section {
+        padding: 50px 15px;
     }
-    
 }

@@ -37,7 +37,7 @@
 
         <section class="two-column-cta fade-in-section">
             
-            <div class="cta-box" style="background-color: transparent; padding-left: 0;">
+            <div class="cta-box" style="background-color: transparent; border: none; padding-left: 0;">
                 <h3>Reach Us Directly</h3>
                 
                 <p style="font-size: 1.2rem;">
@@ -71,3 +71,36 @@
                     
                     <label for="contact-email">Email</label>
                     <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
+                    
+                    <label for="contact-phone">Phone (Optional)</label>
+                    <input type="tel" id="contact-phone" name="phone" placeholder="+91 98765 43210">
+                    
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Tell us a bit about how we can help…"></textarea>
+                    
+                    <button type="submit" class="button">Send Message</button>
+                </form>
+            </div>
+        </section>
+        <p style="text-align: center; max-width: 1000px; margin: -30px auto 60px auto;">“A real person will read and reply to your message in 12–24 hours. No bots. Just Aazron.”</p>
+
+    </main>
+
+    <footer>
+        <div class="footer-contact">
+            <h3>Ready to Connect?</h3>
+            <p>Built by people. For people.</p>
+            
+            <form class="quick-contact-form">
+                <label for="footer-email" class="sr-only">Get in touch fast:</label>
+                <input type="email" id="footer-email" placeholder="Enter your email here">
+                <button type="submit" class="button-arrow">→</button>
+            </form>
+            
+            <p>Or email us directly at: <strong>connect@aazron.in</strong></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
