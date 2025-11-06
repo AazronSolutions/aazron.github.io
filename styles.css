@@ -1,248 +1,29 @@
-/* ================================== */
-/* --- Global Styles & Dark Mode --- */
-/* ================================== */
-
-:root {
-    /* Define Color Palette */
-    --color-dark-bg: #121212; /* Deep Black/Grey Background */
-    --color-mid-bg: #1e1e1e;  /* Section background */
-    --color-text-light: #f5f5f5; /* Light Text */
-    --color-text-mid: #b0b0b0;  /* Secondary Text */
-    --color-primary: #007aff;  /* Bright Blue (From Logo) */
-    --color-primary-hover: #1a8bff;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-dark-bg); /* Dark Mode Background */
-    color: var(--color-text-light); /* Light Text */
-    line-height: 1.6;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--color-text-light);
-}
-
-p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-text-mid);
-}
-
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--color-primary-hover);
-    text-decoration: underline;
-}
-
-main {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-section {
-    padding: 80px 20px; /* Increased padding for cinematic feel */
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* ================================== */
-/* --- Header & Nav Bar --- */
-/* ================================== */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: var(--color-dark-bg);
-    border-bottom: 1px solid #333; /* Darker border */
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
-    transition: transform 0.3s ease;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav li {
-    margin-left: 25px;
-}
-
-.main-nav a {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text-light);
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: var(--color-primary);
-}
-
-/* ================================== */
-/* --- Page Layouts & Elements --- */
-/* ================================== */
-
-.hero-section, .page-hero {
-    text-align: center;
-    padding-top: 120px; /* Extra padding for dramatic effect */
-    padding-bottom: 120px;
-}
-
-.hero-section h1, .page-hero h1 {
-    font-size: 3.8rem; /* Larger, bolder text */
-}
-
-.hero-section h2, .page-hero h2 {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--color-text-mid);
-}
-
-/* Two-Column Layouts (Key to mobile stacking) */
-.two-column-cta {
-    display: flex;
-    gap: 30px;
-}
-
-.cta-box {
-    flex: 1;
-    background-color: var(--color-mid-bg); /* Section background */
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #333; /* Subtle frame */
-}
-.cta-box h3 {
-    color: var(--color-primary); /* Highlight headers */
-}
-
-.why-grid, .blog-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding-top: 20px;
-}
-
-.button {
-    background-color: var(--color-primary);
-    color: var(--color-dark-bg); /* Dark text on bright button */
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-}
-
-.button:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-}
-
-/* Forms */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form input,
-.contact-form textarea {
-    background-color: #2b2b2b; /* Dark input background */
-    color: var(--color-text-light);
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-
-/* Footer Styles */
-footer {
-    background-color: #000; /* Pure black footer */
-    color: var(--color-text-mid);
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid #333;
-}
-
-.quick-contact-form input {
-    background-color: #2b2b2b;
-    color: var(--color-text-light);
-    border: 1px solid #444;
-}
-
-.quick-contact-form button {
-    background-color: var(--color-primary);
-}
-
-
-/* ================================== */
-/* --- CINEMATIC FADE-IN ANIMATION (No Lag) --- */
-/* ================================== */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  /* Uses hardware acceleration for lag-free animation */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================================== */
-/* --- MOBILE RESPONSIVENESS (Lag-Free) --- */
-/* ================================== */
 @media (max-width: 768px) {
-    
+    /* 1. COMPRESS THE HEADER */
     .main-header {
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 10px;
+        /* Reduce top/bottom padding to make the header container thinner */
+        padding: 8px 15px; 
+    }
+    
+    /* 2. SHRINK THE LOGO */
+    .logo img {
+        /* Set a maximum height to reduce its vertical footprint */
+        max-height: 35px; 
+        width: auto; /* Maintain aspect ratio */
     }
 
-    .main-nav ul {
-        flex-direction: column;
-        padding-top: 15px;
+    /* 3. ENSURE CONTENT ISN'T HIDDEN (If you are using position: fixed) */
+    /* You must push the main content down by the new, smaller height of the header.
+       You will need to adjust the value (e.g., 60px) to match the final height of your header. */
+    main {
+        padding-top: 60px; /* Adjust this value! */
     }
     
-    /* Crucial stacking for mobile viewing */
-    .two-column-cta,
-    .why-grid,
-    .blog-grid {
-        flex-direction: column; 
-        grid-template-columns: 1fr; 
-        gap: 30px;
-    }
-
-    /* Scaling down text for mobile readability */
-    .hero-section h1, .page-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-section h2, .page-hero h2 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-    }
-    
-    section {
-        padding: 50px 15px;
+    /* 4. OPTIONAL: Hide or reorganize navigation links */
+    /* If your full navigation list is visible, you might want to hide it
+       and implement a hamburger menu instead, as a full list takes up too much room. */
+    .main-nav {
+        /* If you aren't using a hamburger menu yet, try to hide the links: */
+        display: none; 
     }
 }
