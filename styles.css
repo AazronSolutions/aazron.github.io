@@ -246,3 +246,76 @@ footer {
         padding: 50px 15px;
     }
 }
+/* --- 1. ABOUT SECTION BASE --- */
+.about-section {
+    padding: 100px 5%;
+    background-color: #f4f4f4; /* Light background for contrast */
+    color: #333;
+}
+
+/* --- 2. ALTERNATING ROW LAYOUT --- */
+.about-row {
+    /* Uses Flexbox to put text and image side-by-side */
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.about-text-content {
+    flex: 1; /* Allows text to take up equal space */
+}
+
+.about-image-content {
+    flex: 1; /* Allows image area to take up equal space */
+    /* Placeholder styles for the image area */
+    background-color: #ccc; 
+    height: 350px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-row h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+/* Fixes "noob" paragraphs: larger line height, clear breaks */
+.about-row p {
+    line-height: 1.7; 
+    margin-bottom: 15px;
+}
+
+/* Emphasize key text */
+.about-row p strong {
+    font-weight: 700;
+    color: #4CAF50; /* Match accent color */
+}
+
+/* --- 3. STATISTICS ROW (Trust Signals) --- */
+.stats-row {
+    /* Distributes stats evenly across the section */
+    display: flex;
+    justify-content: space-around; 
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #ddd; /* Subtle visual separator */
+}
+
+.stat-box h3 {
+    font-size: 3em;
+    color: #4CAF50; /* Match accent color for prominence */
+    font-weight: 800;
+}
+
+/* --- 4. Mobile Adjustments for Stacking --- */
+@media (max-width: 768px) {
+    .about-row, .stats-row {
+        flex-direction: column; /* Stacks side-by-side items vertically on phone screens */
+        gap: 20px;
+    }
+    .about-image-content {
+        order: -1; /* Puts the image above the text on mobile for better visual flow */
+    }
+}
